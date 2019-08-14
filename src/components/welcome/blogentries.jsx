@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import cookie from 'react-cookies'
 
 const BlogEntries = (props) => {
     const [blogEntries, setBlogEntries] = useState([])

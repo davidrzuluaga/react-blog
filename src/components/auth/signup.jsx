@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import { Card, TextField, CardContent, Button, CardActions } from '@material-ui/core';
-import { createSession, redirectIfLogged } from "./auth";
+import { registerUser, redirectIfLogged } from "./auth";
 
-const Login = () => {
+const SignUp = () => {
     const [values, setValues] = React.useState({
         email: '',
         password: ''
     });
-    const [checkVal, setCheckVal] = React.useState(false);
-    
     // eslint-disable-next-line  
     const [start, setStart] = useState(() => redirectIfLogged())
+
+    const [checkVal, setCheckVal] = React.useState(false);
 
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
@@ -18,7 +18,7 @@ const Login = () => {
 
     function checkValues(email, password) {
         if (email && password) {
-            createSession(email, password)
+            registerUser(email, password)
         } else {
             setCheckVal(true)
         }
@@ -27,7 +27,7 @@ const Login = () => {
     return (
         <div className="login">
             <Card>
-                <p>Login!</p>
+                <p>SignUp!</p>
                 <CardContent className="content">
                     <TextField
                         id="outlined-name"
@@ -49,7 +49,7 @@ const Login = () => {
                 </CardContent>
                 <CardActions>
                     <Button size="small" onClick={() => checkValues(values.email, values.password)} color="primary">
-                        Enter!
+                        Register!
                     </Button>
                 </CardActions>
             </Card>
@@ -58,4 +58,4 @@ const Login = () => {
   
 }
 
-export default Login
+export default SignUp

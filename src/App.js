@@ -10,6 +10,7 @@ import UserEntries from './components/blog/userentries';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import Loading from './components/layouts/loading';
+import SignUp from './components/auth/signup';
 
 function App() {
   const [session, setSession] = useState(null)
@@ -22,7 +23,6 @@ function App() {
         url: `http://localhost:5035/api/users/current`
       }).then(element => {
         setSession(true)
-        if (window.location.pathname === '/login') {window.location.replace('/')}
       }).catch(e=>{
         setSession(false)
       })
@@ -50,6 +50,7 @@ function App() {
     <Switch>
       <Route exact path="/" component={() => <Welcome />}/>
       <Route exact path="/login" component={() => <Login />}/>
+      <Route exact path="/signup" component={() => <SignUp />}/>
       <PrivateRoute path='/protected' component={UserEntries} />
       <Route path="*" component={NotFound}/>
     </Switch>
