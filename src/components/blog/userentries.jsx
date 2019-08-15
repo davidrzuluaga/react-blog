@@ -14,7 +14,7 @@ const UserEntries = () => {
     axios({
       headers: {'Authorization':`Token ${cookie.load('session').token}`},
       method: "GET",
-      url: `http://localhost:5035/api/blog/${cookie.load('session')._id}`
+      url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blog/${cookie.load('session')._id}`
     }).then(element => {
       setBlogEntries(element.data.Blog)
     }).catch(e=>{

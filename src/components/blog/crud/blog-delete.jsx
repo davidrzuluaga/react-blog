@@ -15,7 +15,7 @@ export default function DeleteBlogEntry(props) {
 
   function deleteEntry(id) {
     axios({
-        url: `http://localhost:5035/api/blog/${id}`,
+        url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blog/${id}`,
         headers: {'Authorization':`Token ${cookie.load('session').token}`},        
         method: "DELETE"
     }).then((res)=>{

@@ -12,7 +12,7 @@ const Welcome = () => {
   function getBlogEntries() {
     axios({
       method: "GET",
-      url: `http://localhost:5035/api/blogs`
+      url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blogs`
     }).then(element => {
       setBlogEntries(element.data.Blog)
     }).catch(e=>{

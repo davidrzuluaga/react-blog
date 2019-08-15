@@ -15,7 +15,7 @@ function logout() {
 function createSession (email, password) {
     axios({
         method: 'POST',
-        url: 'http://localhost:5035/api/users/login',
+        url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/users/login`,
         data: { user: { email, password } }
     }).then(response => {
         cookie.save('session', response.data.user, { path: '/' })
@@ -28,7 +28,7 @@ function createSession (email, password) {
 function registerUser (email, password) {
     axios({
         method: 'POST',
-        url: 'http://localhost:5035/api/users/',
+        url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/users/`,
         data: { user: { email, password } }
     }).then(response => {
         cookie.save('session', response.data.user, { path: '/' })

@@ -20,7 +20,7 @@ function App() {
       axios({
         headers: {'Authorization':`Token ${cookie.load('session').token}`},
         method: "GET",
-        url: `http://localhost:5035/api/users/current`
+        url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/users/current`
       }).then(element => {
         setSession(true)
       }).catch(e=>{

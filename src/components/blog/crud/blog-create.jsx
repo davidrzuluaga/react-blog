@@ -31,7 +31,7 @@ export default function CreateBlogEntry(props) {
         axios({
             headers: {'Authorization':`Token ${cookie.load('session').token}`},
             method: 'POST',
-            url: 'http://localhost:5035/api/blog',
+            url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blog`,
             data: { title, description, picture: image, user: cookie.load('session')._id }
         }).then(response => {
             console.log(response)

@@ -9,7 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import DeleteBlogEntry from './blog-delete';
 
 const useStyles = makeStyles({
-
+  card: {
+    margin: '10px 0',
+  },
   media: {
     height: 140,
   },
