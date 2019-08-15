@@ -32,7 +32,6 @@ function App() {
   }
 
   function PrivateRoute({ component: Component, ...rest }) {
-    setSession(null)
     checkSession()
     if (session) {
       return <Route {...rest} render={(props) => (
@@ -51,7 +50,7 @@ function App() {
       <Route exact path="/" component={() => <Welcome />}/>
       <Route exact path="/login" component={() => <Login />}/>
       <Route exact path="/signup" component={() => <SignUp />}/>
-      <PrivateRoute path='/protected' component={UserEntries} />
+      <PrivateRoute path='/userentries' component={UserEntries} />
       <Route path="*" component={NotFound}/>
     </Switch>
   </>);

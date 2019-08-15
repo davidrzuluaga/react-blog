@@ -7,6 +7,11 @@ function redirectIfLogged() {
     }
 }
 
+function logout() {
+    cookie.remove('session', { path: '/' })
+    window.location.replace('/')
+}
+
 function createSession (email, password) {
     axios({
         method: 'POST',
@@ -37,4 +42,4 @@ function registerUser (email, password) {
     })
 }
 
-export {createSession,registerUser,redirectIfLogged}
+export {createSession,registerUser,redirectIfLogged,logout}
