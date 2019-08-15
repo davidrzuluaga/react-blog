@@ -20,6 +20,8 @@ export default function DeleteBlogEntry(props) {
         method: "DELETE"
     }).then((res)=>{
         if (res.status === 200){
+            let blogEntries = props.blogEntries.filter(element => element._id !== id)
+            props.setBlogEntries(blogEntries)
             handleOpen()
         }
     },(err)=>{
@@ -30,7 +32,7 @@ export default function DeleteBlogEntry(props) {
   return (
     <>
         <Button size="small" color="primary" onClick={handleOpen}>
-            Eliminar
+            Delete
         </Button>
         {open ? <Dialog
             open

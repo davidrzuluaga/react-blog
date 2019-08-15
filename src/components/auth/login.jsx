@@ -46,6 +46,7 @@ const Login = () => {
                         variant="outlined"
                     />
                     {checkVal ? <p>Please write a valid email and password.</p> : ""}
+                    <p><a href="/signup">Click here to create an account</a></p>
                 </CardContent>
                 <CardActions>
                     <Button size="small" onClick={() => checkValues(values.email, values.password)} color="primary">

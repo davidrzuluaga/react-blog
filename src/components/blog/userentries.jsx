@@ -3,6 +3,7 @@ import BlogEntries from '../welcome/blogentries';
 import axios from 'axios';
 import cookie from 'react-cookies'
 import { Grid } from '@material-ui/core';
+import CreateBlogEntry from './crud/blog-create';
 
 const UserEntries = () => {
   // eslint-disable-next-line
@@ -24,15 +25,17 @@ const UserEntries = () => {
   
   return (
     <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
+    container
+    direction="row"
+    justify="center"
+    alignItems="center"
     >
+      {console.log(blogEntries)}
       <Grid item xs={5}>
         <div className="UserEntries">
           <h1>Your Entries</h1>
-          <BlogEntries blogEntries={blogEntries} />
+          <CreateBlogEntry blogEntries={blogEntries} setBlogEntries={setBlogEntries} />
+          <BlogEntries blogEntries={blogEntries} setBlogEntries={setBlogEntries} />
         </div>  
       </Grid>
     </Grid>

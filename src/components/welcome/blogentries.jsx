@@ -6,7 +6,7 @@ const BlogEntries = (props) => {
     return (
         <div className="blogEntries">
             {props.blogEntries.map(element => 
-                <BlogRead element = {element} />
+                <BlogRead key={element._id} {...props} element = {element} />
             )}
             {props.blogEntries.length === 0 ? "It seems that is not entries here. Write one!" : ""}
         </div>

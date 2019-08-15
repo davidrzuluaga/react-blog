@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { IconButton, Icon, TextField } from '@material-ui/core';
+import { Icon, TextField } from '@material-ui/core';
 import cookie from 'react-cookies'
 import axios from 'axios';
 
@@ -34,7 +34,8 @@ export default function CreateBlogEntry(props) {
             url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blog`,
             data: { title, description, picture: image, user: cookie.load('session')._id }
         }).then(response => {
-            console.log(response)
+            let blogEntries = props.blogEntries.concat(response.data.Blog)
+            props.setBlogEntries(blogEntries)
             handleOpen()
         }).catch((err) =>{
             alert("Algo salió mal.")
@@ -46,11 +47,12 @@ export default function CreateBlogEntry(props) {
 
   return (
     <>
-        <IconButton color="inherit" onClick={handleOpen}>
-            <Icon className={props.classes.icon} color="primary">
-                <i class="material-icons">create</i>
+        <Button color="inherit" onClick={handleOpen}>
+            <Icon>
+                <i className="material-icons">create</i>
             </Icon>
-        </IconButton>
+            Create a post
+        </Button>
         {open ? <Dialog
             open
             onClose={handleOpen}

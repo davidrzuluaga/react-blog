@@ -7,9 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import CreateBlogEntry from "../../blog/crud/blog-create";
 import { logout } from "../../auth/auth";
 import cookie from 'react-cookies'
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,7 +54,7 @@ export default function MenuAppBar() {
           </Typography>
           {checkSession() ? 
             <div>
-              <CreateBlogEntry classes={classes} />
+              <Button style={{color: "white"}} onClick={() => window.location.replace('/userentries')}>My entries</Button>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -79,7 +79,6 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={() => window.location.replace('/userentries')}>My entries</MenuItem>
                 <MenuItem onClick={() => logout()}>Logout</MenuItem>
               </Menu>
             </div>

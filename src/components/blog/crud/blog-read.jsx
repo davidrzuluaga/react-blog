@@ -39,7 +39,7 @@ export default function BlogRead(props) {
       </CardActionArea>
       <CardActions>
         {window.location.pathname === '/userentries' ?
-          <DeleteBlogEntry element={props.element} />
+          <DeleteBlogEntry {...props} element={props.element} />
         : ""}
       </CardActions>
     </Card>
