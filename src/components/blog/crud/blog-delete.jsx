@@ -15,7 +15,7 @@ export default function DeleteBlogEntry(props) {
 
   function deleteEntry(id) {
     axios({
-        url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blog/${id}`,
+        url: `https://node-blog-api-app.herokuapp.com/api/blog/${id}`,
         headers: {'Authorization':`Token ${cookie.load('session').token}`},        
         method: "DELETE"
     }).then((res)=>{

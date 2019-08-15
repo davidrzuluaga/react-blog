@@ -31,7 +31,7 @@ export default function CreateBlogEntry(props) {
         axios({
             headers: {'Authorization':`Token ${cookie.load('session').token}`},
             method: 'POST',
-            url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blog`,
+            url: `https://node-blog-api-app.herokuapp.com/api/blog`,
             data: { title, description, picture: image, user: cookie.load('session')._id }
         }).then(response => {
             let blogEntries = props.blogEntries.concat(response.data.Blog)

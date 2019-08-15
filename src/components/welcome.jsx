@@ -12,7 +12,7 @@ const Welcome = () => {
   function getBlogEntries() {
     axios({
       method: "GET",
-      url: `${process.env.REACT_APP_NODE_SERVER_URL}/api/blogs`
+      url: `https://node-blog-api-app.herokuapp.com/api/blogs`
     }).then(element => {
       setBlogEntries(element.data.Blog)
     }).catch(e=>{
