@@ -21,7 +21,7 @@ const UserEntries = () => {
     }).catch(e=>{
       console.log(e)  
     })
-  }   
+  }
   
   return (
     <div className="row">
