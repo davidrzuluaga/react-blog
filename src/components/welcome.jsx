@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import BlogEntries from './welcome/blogentries';
-import { Grid } from '@material-ui/core';
 import axios from 'axios';
 
 const Welcome = () => {
-  // eslint-disable-next-line
-  const [start, setStart] = useState(() => getBlogEntries())
-
   const [blogEntries, setBlogEntries] = useState([])
+  
+  useEffect(() => {
+    getBlogEntries()
+  });
 
   function getBlogEntries() {
     axios({
@@ -20,20 +20,15 @@ const Welcome = () => {
     })
   }    
   return (
-    <Grid
-      container
-      direction="row"
-      justify="center"
-      alignItems="center"
-    >
-      <Grid item xs={5}>      
+    <div className="row" >
+      <div className="col-5 centered">      
         <div className="welcome">
             <h1>Welcome to the blog</h1>
             <p>Here you can see all the entries!</p>
         </div>
         <BlogEntries blogEntries={blogEntries} />
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
   
 }

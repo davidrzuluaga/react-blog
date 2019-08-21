@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import BlogEntries from '../welcome/blogentries';
 import axios from 'axios';
 import cookie from 'react-cookies'
-import { Grid } from '@material-ui/core';
 import CreateBlogEntry from './crud/blog-create';
 
 const UserEntries = () => {
-  // eslint-disable-next-line
-  const [start, setStart] = useState(() => getBlogEntries())
-
   const [blogEntries, setBlogEntries] = useState([])
+  
+  useEffect(() => {
+    getBlogEntries()
+  });
 
   function getBlogEntries() {
     axios({
@@ -24,21 +24,15 @@ const UserEntries = () => {
   }   
   
   return (
-    <Grid
-    container
-    direction="row"
-    justify="center"
-    alignItems="center"
-    >
-      {console.log(blogEntries)}
-      <Grid item xs={5}>
+    <div className="row">
+      <div className="col-5 centered">
         <div className="UserEntries">
           <h1>Your Entries</h1>
           <CreateBlogEntry blogEntries={blogEntries} setBlogEntries={setBlogEntries} />
           <BlogEntries blogEntries={blogEntries} setBlogEntries={setBlogEntries} />
         </div>  
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
   
 }
