@@ -29,7 +29,7 @@ export default function CreateBlogEntry(props) {
   function checkValues(title, description, image) {
     if (title && description) {
         axios({
-            headers: {'Authorization':`Token ${cookie.load('session').token}`},
+            headers: {'Authorization':`Token ${(cookie.load('session')||{}).token}`},
             method: 'POST',
             url: `https://node-blog-api-app.herokuapp.com/api/blog`,
             data: { title, description, picture: image, user: cookie.load('session')._id }
@@ -47,7 +47,7 @@ export default function CreateBlogEntry(props) {
 
   return (
     <>
-        <Button color="inherit" onClick={handleOpen}>
+        <Button color="inherit" id="create" onClick={handleOpen}>
             <Icon>
                 <i className="material-icons">create</i>
             </Icon>
@@ -62,7 +62,7 @@ export default function CreateBlogEntry(props) {
             <DialogTitle id="alert-dialog-title">New post</DialogTitle>
             <DialogContent>
                 <TextField
-                    id="outlined-name"
+                    id="name"
                     label="Title"
                     value={values.title}
                     onChange={handleChange('title')}
@@ -71,7 +71,7 @@ export default function CreateBlogEntry(props) {
                     fullWidth
                 />
                 <TextField
-                    id="outlined-dense-multiline"
+                    id="description"
                     label="Content"
                     value={values.description}
                     onChange={handleChange('description')}
@@ -82,7 +82,7 @@ export default function CreateBlogEntry(props) {
                     fullWidth
                 />
                 <TextField
-                    id="outlined-name"
+                    id="image"
                     label="Image Link"
                     value={values.image}
                     onChange={handleChange('image')}
@@ -94,7 +94,7 @@ export default function CreateBlogEntry(props) {
                 {checkVal ? <p>Please write a valid title and post content.</p> : ""}
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => checkValues(values.title,values.description,values.image)} color="primary" autoFocus>
+                <Button id="submit" onClick={() => checkValues(values.title,values.description,values.image)} color="primary" autoFocus>
                     Create
                 </Button>
                 <Button onClick={handleOpen} color="primary" >
