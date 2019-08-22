@@ -9,8 +9,8 @@ const UserEntries = () => {
   
   useEffect(() => {
     getBlogEntries()
-  });
-
+  }, []);
+  
   function getBlogEntries() {
     axios({
       headers: {'Authorization':`Token ${(cookie.load('session')||{}).token}`},

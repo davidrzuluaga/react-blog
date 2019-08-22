@@ -7,7 +7,7 @@ const Welcome = () => {
   
   useEffect(() => {
     getBlogEntries()
-  });
+  }, []);
 
   function getBlogEntries() {
     axios({
@@ -18,7 +18,8 @@ const Welcome = () => {
     }).catch(e=>{
       console.log(e)  
     })
-  }    
+  }
+
   return (
     <div className="row" >
       <div className="col-5 centered">      
